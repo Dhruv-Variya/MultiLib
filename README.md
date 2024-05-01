@@ -99,24 +99,7 @@ Setup In Visual Studio, Build And Run 🚀
   Put /Series/UpdateSeries
 ```
 - Object to pass in parameters is same as **Add series**
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `itemCode`      | `string` | **Required**. Code That can be Uniue |
-| `itemTitle`      | `string` | **Required**. Title |
-| `itemType`      | `string` | **Required**. Type Of Content(Web series, TV series , Anime Etc.) |
-| `itemCast`      | `string` | **Required**. Cast |
-| `itemRating`      | `string` | **Required**. Ratings |
-| `itemReleaseDate`      | `string` | **Required**. Release Date |
-| `itemTrailerURL`      | `string` | **Required**. Trailer URL(Probably Youtube URL) |
-| `itemDescription`      | `string` | **Required**. Description |
-| `itemPoster`      | `string` | **Required**. Image Url |
-| `itemBackPoster`      | `string` | **Required**. Back poster Url |
-| `itemSeasons`      | `integer` | **Required** |
-| `isUpcoming`      | `Bool` | **Required** |
-| `seriesCategoryIds`      | `Array Of Integer` | **Required** Id of Catagories from Catagories table|
-| `seriesLanguagesIds`      | `Array Of Integer` | **Required**. Id of Languages from languages table |
-
+  
 #### Delete series 
 
 ```http
