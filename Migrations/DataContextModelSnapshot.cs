@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _NET.Data;
+using MultiLib.Data;
 
 #nullable disable
 
-namespace _NET.Migrations
+namespace MultiLib.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace _NET.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("_NET.models.User", b =>
+            modelBuilder.Entity("MultiLib.models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -56,7 +56,7 @@ namespace _NET.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("_NET.models.analysis", b =>
+            modelBuilder.Entity("MultiLib.models.analysis", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -87,7 +87,7 @@ namespace _NET.Migrations
                     b.ToTable("analysis");
                 });
 
-            modelBuilder.Entity("_NET.models.catagoryModel", b =>
+            modelBuilder.Entity("MultiLib.models.catagoryModel", b =>
                 {
                     b.Property<int>("catagoryId")
                         .ValueGeneratedOnAdd()
@@ -103,7 +103,7 @@ namespace _NET.Migrations
                     b.ToTable("Catagory");
                 });
 
-            modelBuilder.Entity("_NET.models.episodesModel", b =>
+            modelBuilder.Entity("MultiLib.models.episodesModel", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -140,7 +140,7 @@ namespace _NET.Migrations
                     b.ToTable("episodes");
                 });
 
-            modelBuilder.Entity("_NET.models.itemCatagories", b =>
+            modelBuilder.Entity("MultiLib.models.itemCatagories", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -159,7 +159,7 @@ namespace _NET.Migrations
                     b.ToTable("itemCatagories");
                 });
 
-            modelBuilder.Entity("_NET.models.itemLanguages", b =>
+            modelBuilder.Entity("MultiLib.models.itemLanguages", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -178,7 +178,7 @@ namespace _NET.Migrations
                     b.ToTable("itemLanguages");
                 });
 
-            modelBuilder.Entity("_NET.models.languageModel", b =>
+            modelBuilder.Entity("MultiLib.models.languageModel", b =>
                 {
                     b.Property<int>("languageId")
                         .ValueGeneratedOnAdd()
@@ -194,7 +194,7 @@ namespace _NET.Migrations
                     b.ToTable("languages");
                 });
 
-            modelBuilder.Entity("_NET.models.post", b =>
+            modelBuilder.Entity("MultiLib.models.post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -216,7 +216,7 @@ namespace _NET.Migrations
                     b.ToTable("posts");
                 });
 
-            modelBuilder.Entity("_NET.models.seasonsModel", b =>
+            modelBuilder.Entity("MultiLib.models.seasonsModel", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -238,7 +238,7 @@ namespace _NET.Migrations
                     b.ToTable("seasons");
                 });
 
-            modelBuilder.Entity("_NET.models.seriesModel", b =>
+            modelBuilder.Entity("MultiLib.models.seriesModel", b =>
                 {
                     b.Property<int>("itemId")
                         .ValueGeneratedOnAdd()

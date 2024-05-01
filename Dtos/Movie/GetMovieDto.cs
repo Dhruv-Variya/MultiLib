@@ -1,4 +1,4 @@
-﻿namespace _NET.Dtos.Movie
+﻿namespace MultiLib.Dtos.Movie
 {
     public class GetMovieDto
     {
@@ -14,7 +14,7 @@
         public string? TreailerURL { get; set; } = "youtube.com";
         public string? Description { get; set; }
         public byte[]? MoviePoster { get; set; }
-        
+
 
 
     }

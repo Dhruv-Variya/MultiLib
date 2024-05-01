@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace _NET.models
+namespace MultiLib.models
 {
     public class episodesModel
     {

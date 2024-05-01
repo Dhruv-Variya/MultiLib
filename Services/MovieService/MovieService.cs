@@ -1,14 +1,13 @@
-﻿using _NET.Data;
-using _NET.Dtos.Movie;
-using _NET.models;
-using AutoMapper;
+﻿using AutoMapper;
 using Azure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using models;
+using MultiLib.Data;
+using MultiLib.Dtos.Movie;
+using MultiLib.models;
 
-namespace _NET.Services.MovieService
+namespace MultiLib.Services.MovieService
 {
     public class MovieService : IMovieService
     {
@@ -17,7 +16,7 @@ namespace _NET.Services.MovieService
             new Movie(),
             new Movie { Id = 1,Title = "1" }
         };
-       
+
         private readonly IMapper _mapper;
         private readonly DataContext _context;
         private readonly IWebHostEnvironment _environment;
@@ -27,7 +26,7 @@ namespace _NET.Services.MovieService
         {
             _mapper = mapper;
             _context = context;
-            _environment = environment;   
+            _environment = environment;
         }
 
 
@@ -40,14 +39,14 @@ namespace _NET.Services.MovieService
             byte[] imageBytes = Convert.FromBase64String(newMovie.Image);
 
             string Filepath = _environment.WebRootPath + "\\Upload\\Movie\\" + movie.Title;
-            if (!System.IO.Directory.Exists(Filepath))
+            if (!Directory.Exists(Filepath))
             {
-                System.IO.Directory.CreateDirectory(Filepath);
+                Directory.CreateDirectory(Filepath);
             }
             string imagepath = Filepath + "\\" + movie.Title + ".png";
-            if (!System.IO.File.Exists(imagepath))
+            if (!File.Exists(imagepath))
             {
-                System.IO.File.Delete(imagepath);
+                File.Delete(imagepath);
             }
             File.WriteAllBytes(imagepath, imageBytes);
             string Imageurl = string.Empty;
@@ -76,7 +75,7 @@ namespace _NET.Services.MovieService
                 {
                     throw new Exception($"Movie with ID '{id}' not found");
                 }
-                
+
                 string Filepath = _environment.WebRootPath + "\\Upload\\Movie\\" + dbMovies.Title;
                 string imagepath = Filepath + "\\" + dbMovies.Title + ".png";
                 _context.movies.Remove(dbMovies);
@@ -97,8 +96,8 @@ namespace _NET.Services.MovieService
         {
             var serviceResponse = new ServiceResponse<List<GetMovieDto>>();
 
-            var dbMovies =  await _context.movies.ToListAsync();
-            
+            var dbMovies = await _context.movies.ToListAsync();
+
             serviceResponse.Success = true;
             serviceResponse.Message = "succsess";
             serviceResponse.Data = dbMovies.Select(c => _mapper.Map<GetMovieDto>(c)).ToList();
@@ -121,7 +120,7 @@ namespace _NET.Services.MovieService
                 // var movie= movies.FirstOrDefault(c => c.Id == id);
                 serviceResponse.Data = _mapper.Map<GetMovieDto>(dbMovies);
             }
-            
+
             return serviceResponse;
 
 
@@ -136,7 +135,7 @@ namespace _NET.Services.MovieService
             {
                 var dbMovies = await _context.movies.FirstOrDefaultAsync(c => c.Id == updatedMovie.Id);
                 //var movie = movies.FirstOrDefault(c => c.Id == updatedMovie.Id);
-                if(dbMovies == null)
+                if (dbMovies == null)
                 {
                     throw new Exception($"Movie with ID '{updatedMovie.Id}' not found");
                 }
@@ -146,14 +145,14 @@ namespace _NET.Services.MovieService
                 byte[] imageBytes = Convert.FromBase64String(updatedMovie.Image);
 
                 string Filepath = _environment.WebRootPath + "\\Upload\\Movie\\" + dbMovies.Title;
-                if (!System.IO.Directory.Exists(Filepath))
+                if (!Directory.Exists(Filepath))
                 {
-                    System.IO.Directory.CreateDirectory(Filepath);
+                    Directory.CreateDirectory(Filepath);
                 }
                 string imagepath = Filepath + "\\" + dbMovies.Title + ".png";
-                if (!System.IO.File.Exists(imagepath))
+                if (!File.Exists(imagepath))
                 {
-                    System.IO.File.Delete(imagepath);
+                    File.Delete(imagepath);
                 }
                 File.WriteAllBytes(imagepath, imageBytes);
                 string Imageurl = string.Empty;
@@ -164,21 +163,22 @@ namespace _NET.Services.MovieService
                 //string Imageurl = string.Empty;
                 //Imageurl = hosturl + "/Upload/Movie/" + updatedMovie.Title + "/" + updatedMovie.Title + ".png";
 
-               
+
                 serviceResponse.Success = true;
                 //serviceResponse.Message = Imageurl;
 
                 _mapper.Map(updatedMovie, dbMovies);
-               // movie.Title = updatedMovie.Title;
-               // movie.ReleaseDate = updatedMovie.ReleaseDate;
-               // movie.Genre = updatedMovie.Genre;
-               // movie.Cast = updatedMovie.Cast;
-               // movie.Lang = updatedMovie.Lang;
-               // movie.Rating = updatedMovie.Rating;
-               // movie.TreailerURL = updatedMovie.TreailerURL;
+                // movie.Title = updatedMovie.Title;
+                // movie.ReleaseDate = updatedMovie.ReleaseDate;
+                // movie.Genre = updatedMovie.Genre;
+                // movie.Cast = updatedMovie.Cast;
+                // movie.Lang = updatedMovie.Lang;
+                // movie.Rating = updatedMovie.Rating;
+                // movie.TreailerURL = updatedMovie.TreailerURL;
 
                 serviceResponse.Data = _mapper.Map<GetMovieDto>(dbMovies);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 serviceResponse.Success = false;
                 serviceResponse.Message = ex.Message;
@@ -189,6 +189,6 @@ namespace _NET.Services.MovieService
 
         }
 
-  
+
     }
 }

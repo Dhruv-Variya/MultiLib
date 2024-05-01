@@ -1,13 +1,12 @@
-﻿using _NET.Data;
-using _NET.Dtos.Movie;
-using _NET.Dtos.movieDto;
-using _NET.models;
-using _NET.Services.MovieService;
+﻿using MultiLib.Dtos.Movie;
+using MultiLib.Services.MovieService;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using models;
+using MultiLib.Data;
+using MultiLib.Dtos.movieDto;
+using MultiLib.models;
 
-namespace _NET.Services.movieManagementService
+namespace MultiLib.Services.movieManagementService
 {
     public class movieManagementService : IMovieManagementService
     {
@@ -33,7 +32,7 @@ namespace _NET.Services.movieManagementService
 
 
         #region get all movies
-       
+
         public async Task<ServiceResponse<List<getMovieDto>>> GetAllMovies()
         {
             var serviceResponse = new ServiceResponse<List<getMovieDto>>();
@@ -42,7 +41,7 @@ namespace _NET.Services.movieManagementService
             {
                 serviceResponse.Data = new List<getMovieDto>();
                 var dbMovies = await _context.movieStorage.ToListAsync();
-                
+
                 // Fetch categories for each movie
                 foreach (var movie in dbMovies)
                 {
@@ -75,7 +74,7 @@ namespace _NET.Services.movieManagementService
 
                 serviceResponse.Success = true;
                 serviceResponse.Message = "Success";
-               
+
             }
             catch (Exception ex)
             {
@@ -124,7 +123,7 @@ namespace _NET.Services.movieManagementService
                 dto.categories = categories;
                 dto.languages = languages;
 
-                serviceResponse.Data=dto;
+                serviceResponse.Data = dto;
                 serviceResponse.Success = true;
                 serviceResponse.Message = "succsess";
             }
@@ -318,12 +317,12 @@ namespace _NET.Services.movieManagementService
                             select new
                             {
                                 MovieId = movie.movieId,
-                                movieCode = movie.movieCode,
+                                movie.movieCode,
                                 MovieTitle = movie.movieTitle,
-                                TimesClicked = analysisData != null ? analysisData.timesClicked : (int?)null,
-                                TimesTrailerWatched = analysisData != null ? analysisData.trailerReach : (int?)null,
-                                upvote = analysisData != null ? analysisData.upVote : (int?)null,
-                                downvote = analysisData != null ? analysisData.downVote : (int?)null,
+                                TimesClicked = analysisData != null ? analysisData.timesClicked : null,
+                                TimesTrailerWatched = analysisData != null ? analysisData.trailerReach : null,
+                                upvote = analysisData != null ? analysisData.upVote : null,
+                                downvote = analysisData != null ? analysisData.downVote : null,
                             };
 
                 var result = await query.ToListAsync();
@@ -357,12 +356,12 @@ namespace _NET.Services.movieManagementService
                             select new
                             {
                                 MovieId = movie.movieId,
-                                movieCode = movie.movieCode,
+                                movie.movieCode,
                                 MovieTitle = movie.movieTitle,
-                                TimesClicked = analysisData != null ? analysisData.timesClicked : (int?)null,
-                                TimesTrailerWatched = analysisData != null ? analysisData.trailerReach : (int?)null,
-                                upvote = analysisData != null ? analysisData.upVote : (int?)null,
-                                downvote = analysisData != null ? analysisData.downVote : (int?)null,
+                                TimesClicked = analysisData != null ? analysisData.timesClicked : null,
+                                TimesTrailerWatched = analysisData != null ? analysisData.trailerReach : null,
+                                upvote = analysisData != null ? analysisData.upVote : null,
+                                downvote = analysisData != null ? analysisData.downVote : null,
                             };
 
                 var result = await query.ToListAsync();

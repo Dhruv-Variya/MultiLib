@@ -1,16 +1,16 @@
-﻿using _NET.Data;
-using _NET.Dtos.Movie;
-using _NET.Dtos.User;
-using _NET.models;
-using _NET.Services.UserService;
+﻿using MultiLib.Data;
+using MultiLib.Dtos.Movie;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using models;
+using MultiLib.models;
+using MultiLib.Dtos.User;
+using MultiLib.models;
+using MultiLib.Services.UserService;
 
-namespace _NET.Controllers
+namespace MultiLib.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

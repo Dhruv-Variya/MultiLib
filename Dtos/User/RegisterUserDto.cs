@@ -1,4 +1,4 @@
-﻿namespace _NET.Dtos.User
+﻿namespace MultiLib.Dtos.User
 {
     public class RegisterUserDto
     {

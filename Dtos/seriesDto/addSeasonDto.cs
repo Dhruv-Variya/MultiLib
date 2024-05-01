@@ -1,6 +1,6 @@
-﻿using _NET.models;
+﻿using MultiLib.models;
 
-namespace _NET.Dtos.seriesDto
+namespace MultiLib.Dtos.seriesDto
 {
     public class addSeasonDto
     {

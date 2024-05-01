@@ -1,9 +1,9 @@
-﻿using _NET.Dtos.Movie;
-using _NET.models;
-using Microsoft.AspNetCore.Mvc;
-using models;
+﻿using Microsoft.AspNetCore.Mvc;
+using MultiLib.models;
+using MultiLib.Dtos.Movie;
+using MultiLib.models;
 
-namespace _NET.Services.MovieService
+namespace MultiLib.Services.MovieService
 {
     public interface IMovieService
     {

@@ -1,11 +1,11 @@
-﻿using _NET.Data;
-using _NET.Dtos.seriesDto;
-using _NET.models;
-using _NET.Services.movieManagementService;
-using _NET.Services.SeriesService;
+﻿using MultiLib.Services.movieManagementService;
 using Microsoft.AspNetCore.Mvc;
+using MultiLib.Data;
+using MultiLib.Dtos.seriesDto;
+using MultiLib.models;
+using MultiLib.Services.SeriesService;
 
-namespace _NET.Controllers
+namespace MultiLib.Controllers
 {
     //[Authorize]
     [ApiController]
@@ -93,7 +93,7 @@ namespace _NET.Controllers
         {
             return Ok(await _serieseService.AddSeasonsAndEpisodes(seasonsList));
         }
-        
+
 
     }
 }

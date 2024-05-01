@@ -1,8 +1,7 @@
-﻿using _NET.models;
-using Microsoft.EntityFrameworkCore;
-using models;
+﻿using Microsoft.EntityFrameworkCore;
+using MultiLib.models;
 
-namespace _NET.Data
+namespace MultiLib.Data
 {
     public class DataContext : DbContext
     {

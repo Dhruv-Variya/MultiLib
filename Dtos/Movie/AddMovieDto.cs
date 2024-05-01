@@ -1,4 +1,4 @@
-﻿namespace _NET.Dtos.Movie
+﻿namespace MultiLib.Dtos.Movie
 {
     public class AddMovieDto
     {

@@ -1,4 +1,4 @@
-﻿namespace _NET.Dtos.movieDto
+﻿namespace MultiLib.Dtos.movieDto
 {
     public class addMovieDto
     {
@@ -12,7 +12,7 @@
         public string? moviePoster { get; set; }
         public string? movieBackPoster { get; set; }
         public bool? isUpcoming { get; set; }
-        public List<int> movieCategoryIds { get; set; } = new List<int>(); 
+        public List<int> movieCategoryIds { get; set; } = new List<int>();
         public List<int> movieLanguagesIds { get; set; } = new List<int>();
     }
 }

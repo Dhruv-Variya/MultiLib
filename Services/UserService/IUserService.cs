@@ -1,8 +1,8 @@
-﻿using _NET.Dtos.Movie;
-using _NET.Dtos.User;
-using _NET.models;
+﻿using MultiLib.Dtos.Movie;
+using MultiLib.Dtos.User;
+using MultiLib.models;
 
-namespace _NET.Services.UserService
+namespace MultiLib.Services.UserService
 {
     public interface IUserService
     {

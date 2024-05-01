@@ -1,12 +1,11 @@
-﻿using _NET.Dtos.Movie;
-using _NET.Dtos.movieDto;
-using _NET.Dtos.seriesDto;
-using _NET.Dtos.User;
-using _NET.models;
-using AutoMapper;
-using models;
+﻿using AutoMapper;
+using MultiLib.Dtos.Movie;
+using MultiLib.Dtos.movieDto;
+using MultiLib.Dtos.seriesDto;
+using MultiLib.Dtos.User;
+using MultiLib.models;
 
-namespace _NET
+namespace MultiLib
 {
     public class AutoMapper : Profile
     {
@@ -15,7 +14,7 @@ namespace _NET
             CreateMap<Movie, GetMovieDto>();
             CreateMap<AddMovieDto, Movie>();
             CreateMap<UpdateMovieDto, Movie>();
-            CreateMap<AuthUserDto,User>();
+            CreateMap<AuthUserDto, User>();
             CreateMap<User, RegisterUserDto>();
             CreateMap<RegisterUserDto, User>();
             CreateMap<User, GetUserDto>();
@@ -30,8 +29,7 @@ namespace _NET
             CreateMap<addSeriesDto, seriesModel>();
             CreateMap<updateSeriesDto, seriesModel>();
 
-            CreateMap<episodesModel, getEpisodeDto> ();
+            CreateMap<episodesModel, getEpisodeDto>();
         }
     }
 }
- 

@@ -1,20 +1,20 @@
-﻿using _NET.Data;
-using _NET.Dtos.Movie;
-using _NET.Dtos.movieDto;
-using _NET.models;
-using _NET.Services.movieManagementService;
-using _NET.Services.MovieService;
+﻿using MultiLib.Services.MovieService;
 using Azure;
 using Microsoft.AspNetCore.Mvc;
+using MultiLib.Data;
+using MultiLib.Dtos.Movie;
+using MultiLib.Dtos.movieDto;
+using MultiLib.models;
+using MultiLib.Services.movieManagementService;
 
-namespace _NET.Controllers
+namespace MultiLib.Controllers
 {
     //[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class movieManagementController : Controller
     {
-        private readonly DataContext _context; 
+        private readonly DataContext _context;
         private readonly IMovieManagementService _movieService;
         private readonly IWebHostEnvironment _environment;
 
@@ -46,7 +46,7 @@ namespace _NET.Controllers
         {
             return Ok(await _movieService.GetMovieAnalysisDataById(id));
         }
-        
+
 
         // get movie by id
         [HttpGet("GetMovieById/{id}")]
