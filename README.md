@@ -12,3 +12,104 @@
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/>
   <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> 
 </p>
+
+- Movie API Example : 
+```
+{
+  "data": [
+    {
+      "movieId": 1,
+      "movieCode": "ukjwf",
+      "movieTitle": "AVATAR",
+      "movieCast": "Sam Worthington",
+      "movieRating": "7.9",
+      "movieReleaseDate": "18/12/2003",
+      "movieTrailerURL": "https://www.youtube.com/watch?v=5PSNL1qE6VY",
+      "movieDescription": "AVATAR",
+      "moviePoster": "https://i.etsystatic.com/18242346/r/il/864ece/3727281843/il_570xN.3727281843_n4vs.jpg",
+      "movieBackPoster": "https://economictimes.indiatimes.com/thumb/msid-94687295,width-1200,height-900,resizemode-4,imgsize-95348/avatar-4-producer-jon-landau-says-first-act-of-movie-is-complete.jpg?from=mdr",
+      "isUpcoming": false,
+      "categories": [
+        "Action",
+        "Adventure",
+        "Comedy"
+      ],
+      "languages": [
+        "English",
+        "Spanish",
+        "French",
+        "Hindi"
+      ]
+    }
+  ],
+  "success": true,
+  "message": "Success"
+}
+```
+- Seriese API Example : 
+```
+{
+  "data": [
+    {
+      "itemId": 1,
+      "itemCode": "technology",
+      "itemTitle": "technology",
+      "itemType": "Web Series",
+      "itemCast": "john doe, alice, bob",
+      "itemRating": "9.0",
+      "itemReleaseDate": "12-2-2024",
+      "itemTrailerURL": "www.youtube.com",
+      "itemDescription": "technology",
+      "itemPoster": "poster.jpg",
+      "itemBackPoster": "backposter.jpg",
+      "itemSeasons": 2,
+      "isUpcoming": false,
+      "categories": null,
+      "languages": null,
+      "numberOfSeasons": 2,
+      "seasonData": [
+        {
+          "seasonNumber": 1,
+          "seasonName": "Season 1: The Beginning",
+          "totalEpisodes": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "episodeName": "Introduction to Coding",
+              "episodeDescription": "An introduction to the basics of coding and programming languages.",
+              "episodeRating": "8.2",
+              "episodeReleaseDate": "2022-01-10",
+              "poster": "https://example.com/poster1.jpg"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 2,
+          "seasonName": "Season 2: Advanced Techniques",
+          "totalEpisodes": 2,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "episodeName": "Advanced JavaScript Concepts",
+              "episodeDescription": "Exploring closures, prototypes, and asynchronous programming in JavaScript.",
+              "episodeRating": "9.1",
+              "episodeReleaseDate": "2022-02-14",
+              "poster": "https://example.com/poster6.jpg"
+            },
+            {
+              "episodeNumber": 2,
+              "episodeName": "Server-Side Development with Node.js",
+              "episodeDescription": "Understanding server-side development using Node.js and Express.",
+              "episodeRating": "9.3",
+              "episodeReleaseDate": "2022-02-21",
+              "poster": "https://example.com/poster7.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "success": true,
+  "message": "Success"
+}
+```
