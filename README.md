@@ -5,7 +5,8 @@
 - I Have Used Multiple projects in single solution Method.
 
 
-<h3 align="left">Languages and Tools Used In This Prject:</h3>
+## Tech Stack
+
 <p align="left"> 
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp" width="50" height="50"/>
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg" alt="dotnet" width="40" height="40"/> 
@@ -14,7 +15,17 @@
 </p>
 
 ## Authors
+
 - [@Dhruv-Variya](https://www.github.com/Dhruv-Variya)
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Dhruv-Variya/MultiLib.git
+```
+Setup In Visual Studio, Build And Run 🚀
 
 ## API Reference
 
