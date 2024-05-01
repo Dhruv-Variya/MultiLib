@@ -13,6 +13,8 @@
   <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> 
 </p>
 
+## Authors
+- [@Dhruv-Variya](https://www.github.com/Dhruv-Variya)
 
 ## API Reference
 
