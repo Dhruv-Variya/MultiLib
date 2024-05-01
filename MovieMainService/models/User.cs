@@ -1,7 +1,7 @@
-﻿using MovieMainService.Dtos.User;
+﻿using MainService.Dtos.User;
 using System.ComponentModel.DataAnnotations;
 
-namespace MovieMainService.models
+namespace MainService.models
 {
     public class User
     {

@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using Azure;
+using MainService.Data;
+using MainService.Dtos.Movie;
+using MainService.models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MovieMainService.Data;
-using MovieMainService.Dtos.Movie;
-using MovieMainService.models;
 
-namespace MovieMainService.Services.MovieService
+namespace MainService.Services.MovieService
 {
     public class MovieService : IMovieService
     {

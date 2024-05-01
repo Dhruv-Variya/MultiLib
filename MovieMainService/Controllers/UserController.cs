@@ -1,16 +1,15 @@
-﻿using MovieMainService.Data;
-using MovieMainService.Dtos.Movie;
+﻿using MainService.Data;
+using MainService.Dtos.Movie;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MovieMainService.models;
-using MovieMainService.Dtos.User;
-using MovieMainService.models;
-using MovieMainService.Services.UserService;
+using MainService.models;
+using MainService.Dtos.User;
+using MainService.Services.UserService;
 
-namespace MovieMainService.Controllers
+namespace MainService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

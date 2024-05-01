@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MovieMainService.models;
-using MovieMainService.Dtos.Movie;
+using MainService.Dtos.Movie;
+using MainService.models;
 
-namespace MovieMainService.Services.MovieService
+namespace MainService.Services.MovieService
 {
     public interface IMovieService
     {

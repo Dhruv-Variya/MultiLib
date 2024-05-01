@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MovieMainService.models;
+﻿using MainService.models;
+using Microsoft.EntityFrameworkCore;
 
-namespace MovieMainService.Data
+namespace MainService.Data
 {
     public class DataContext : DbContext
     {

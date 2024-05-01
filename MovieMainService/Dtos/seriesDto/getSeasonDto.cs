@@ -1,6 +1,6 @@
-﻿using MovieMainService.models;
+﻿using MainService.models;
 
-namespace MovieMainService.Dtos.seriesDto
+namespace MainService.Dtos.seriesDto
 {
 
     public class getSeasonDto

@@ -1,17 +1,17 @@
-﻿using MovieMainService.Dtos.Movie;
+﻿using MainService.Dtos.Movie;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using MovieMainService.Data;
-using MovieMainService.Dtos.User;
-using MovieMainService.Helper;
-using MovieMainService.models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
+using MainService.models;
+using MainService.Dtos.User;
+using MainService.Data;
+using MainService.Helper;
 
-namespace MovieMainService.Services.UserService
+namespace MainService.Services.UserService
 {
     public class UserService : IUserService
     {

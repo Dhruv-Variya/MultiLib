@@ -1,12 +1,12 @@
-﻿using MovieMainService.Dtos.Movie;
-using MovieMainService.Services.MovieService;
+﻿using MainService.Dtos.Movie;
+using MainService.Services.MovieService;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using MovieMainService.Data;
-using MovieMainService.Dtos.movieDto;
-using MovieMainService.models;
+using MainService.models;
+using MainService.Dtos.movieDto;
+using MainService.Data;
 
-namespace MovieMainService.Services.movieManagementService
+namespace MainService.Services.movieManagementService
 {
     public class movieManagementService : IMovieManagementService
     {

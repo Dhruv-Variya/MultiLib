@@ -1,4 +1,4 @@
-﻿namespace MovieMainService.Dtos.Movie
+﻿namespace MainService.Dtos.Movie
 {
     public class AddMovieDto
     {

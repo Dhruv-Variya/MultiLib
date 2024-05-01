@@ -1,4 +1,4 @@
-﻿namespace MovieMainService.models
+﻿namespace MainService.models
 {
     public class ServiceResponse<T>
     {

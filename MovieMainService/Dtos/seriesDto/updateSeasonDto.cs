@@ -1,4 +1,4 @@
-﻿namespace MovieMainService.Dtos.seriesDto
+﻿namespace MainService.Dtos.seriesDto
 {
     public class updateSeasonDto
     {

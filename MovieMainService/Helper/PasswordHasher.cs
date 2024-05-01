@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace MovieMainService.Helper
+namespace MainService.Helper
 {
     public class PasswordHasher
     {

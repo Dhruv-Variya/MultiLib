@@ -1,13 +1,13 @@
-﻿using MovieMainService.Services.MovieService;
+﻿using MainService.Services.MovieService;
 using Azure;
 using Microsoft.AspNetCore.Mvc;
-using MovieMainService.Data;
-using MovieMainService.Dtos.Movie;
-using MovieMainService.Dtos.movieDto;
-using MovieMainService.models;
-using MovieMainService.Services.movieManagementService;
+using MainService.models;
+using MainService.Dtos.Movie;
+using MainService.Services.movieManagementService;
+using MainService.Dtos.movieDto;
+using MainService.Data;
 
-namespace MovieMainService.Controllers
+namespace MainService.Controllers
 {
     //[Authorize]
     [ApiController]

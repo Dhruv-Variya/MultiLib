@@ -1,8 +1,8 @@
-﻿using MovieMainService.Dtos.Movie;
-using MovieMainService.Dtos.User;
-using MovieMainService.models;
+﻿using MainService.Dtos.User;
+using MainService.models;
+using MainService.Dtos.Movie;
 
-namespace MovieMainService.Services.UserService
+namespace MainService.Services.UserService
 {
     public interface IUserService
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace MovieMainService.models
+namespace MainService.models
 {
     public class Movie
     {

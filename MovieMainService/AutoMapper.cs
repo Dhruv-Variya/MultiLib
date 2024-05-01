@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using MovieMainService.Dtos.Movie;
-using MovieMainService.Dtos.movieDto;
-using MovieMainService.Dtos.seriesDto;
-using MovieMainService.Dtos.User;
-using MovieMainService.models;
+using MainService.Dtos.Movie;
+using MainService.Dtos.movieDto;
+using MainService.Dtos.seriesDto;
+using MainService.Dtos.User;
+using MainService.models;
 
-namespace MovieMainService
+namespace MainService
 {
     public class AutoMapper : Profile
     {

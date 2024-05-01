@@ -1,4 +1,4 @@
-﻿namespace MovieMainService.Dtos.User
+﻿namespace MainService.Dtos.User
 {
     public class RegisterUserDto
     {

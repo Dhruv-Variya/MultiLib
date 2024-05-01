@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MovieMainService.models
+namespace MainService.models
 {
     public class itemCatagories
     {

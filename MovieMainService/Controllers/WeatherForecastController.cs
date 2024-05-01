@@ -1,8 +1,8 @@
+using MainService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MovieMainService;
 
-namespace MovieMainService.Controllers;
+namespace MainService.Controllers;
 
 [ApiController]
 [Route("[controller]")]

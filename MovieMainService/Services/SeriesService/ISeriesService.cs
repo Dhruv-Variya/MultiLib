@@ -1,7 +1,7 @@
-﻿using MovieMainService.Dtos.seriesDto;
-using MovieMainService.models;
+﻿using MainService.Dtos.seriesDto;
+using MainService.models;
 
-namespace MovieMainService.Services.SeriesService
+namespace MainService.Services.SeriesService
 {
     public interface ISeriesService
     {

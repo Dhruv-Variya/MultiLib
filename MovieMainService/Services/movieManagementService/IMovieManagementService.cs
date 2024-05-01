@@ -1,8 +1,8 @@
-﻿using MovieMainService.Dtos.Movie;
-using MovieMainService.Dtos.movieDto;
-using MovieMainService.models;
+﻿using MainService.Dtos.movieDto;
+using MainService.models;
+using MainService.Dtos.Movie;
 
-namespace MovieMainService.Services.movieManagementService
+namespace MainService.Services.movieManagementService
 {
     public interface IMovieManagementService
     {

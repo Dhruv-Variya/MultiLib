@@ -1,4 +1,4 @@
-namespace MovieMainService;
+namespace MainService;
 
 public class WeatherForecast
 {

@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using MovieMainService.models;
-using MovieMainService.Data;
-using MovieMainService.Dtos.seriesDto;
+using MainService.models;
+using MainService.Dtos.seriesDto;
+using MainService.Data;
 
-namespace MovieMainService.Services.SeriesService
+namespace MainService.Services.SeriesService
 {
     public class SeriesService : ISeriesService
     {
