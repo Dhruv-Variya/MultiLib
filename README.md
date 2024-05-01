@@ -290,4 +290,14 @@
 }
 ```
 
+## Roadmap
+
+- Add Fully Functional CRUD Endpoints For All Type Of Content.
+
+- Add Another Functionalities Like Analysis, User Roles.
+
+- Implement Complete Authentication And Role Based Authorization.
+
+- Improve Api Performance By Applying Some Optimal Solutions Like caching, Api Gateway, Request Limit and many more.
+
 
