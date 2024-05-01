@@ -1,5 +1,5 @@
 <h1 align="center">MultiLib</h1>
-<h3 align="left">.net api solution with multiple microservices that can be used in multiple projects.</h3>
+<h3 align="left">.NET API solution with multiple microservices that can be used in multiple projects.</h3>
 
 - This Is My Personal Project To Learn .NET Web API.
 - I Have Used Multiple projects in single solution Method.
