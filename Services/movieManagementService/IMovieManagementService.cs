@@ -1,8 +1,8 @@
-﻿using _NET.Dtos.Movie;
-using _NET.Dtos.movieDto;
-using _NET.models;
+﻿using MultiLib.Dtos.Movie;
+using MultiLib.Dtos.movieDto;
+using MultiLib.models;
 
-namespace _NET.Services.movieManagementService
+namespace MultiLib.Services.movieManagementService
 {
     public interface IMovieManagementService
     {
@@ -14,7 +14,7 @@ namespace _NET.Services.movieManagementService
         Task<ServiceResponse<IEnumerable<object>>> GetMovieAnalysisData();
         Task<ServiceResponse<IEnumerable<object>>> GetMovieAnalysisDataById(int id);
 
-        
+
 
     }
 }

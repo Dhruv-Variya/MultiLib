@@ -1,4 +1,4 @@
-﻿namespace _NET.models
+﻿namespace MultiLib.models
 {
     public class analysis
     {
@@ -9,6 +9,6 @@
         public int? upVote { get; set; }
         public int? downVote { get; set; }
         public int? trailerReach { get; set; }
-       
+
     }
 }

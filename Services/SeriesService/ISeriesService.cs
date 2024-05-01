@@ -1,7 +1,7 @@
-﻿using _NET.Dtos.seriesDto;
-using _NET.models;
+﻿using MultiLib.Dtos.seriesDto;
+using MultiLib.models;
 
-namespace _NET.Services.SeriesService
+namespace MultiLib.Services.SeriesService
 {
     public interface ISeriesService
     {

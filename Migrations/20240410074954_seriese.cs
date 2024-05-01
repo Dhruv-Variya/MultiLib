@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace _NET.Migrations
+namespace MultiLib.Migrations
 {
     /// <inheritdoc />
     public partial class seriese : Migration

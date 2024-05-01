@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MultiLib;
 
-namespace _NET.Controllers;
+namespace MultiLib.Controllers;
 
 [ApiController]
 [Route("[controller]")]

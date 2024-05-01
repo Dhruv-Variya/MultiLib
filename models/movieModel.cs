@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-namespace models
+namespace MultiLib.models
 {
     public class movieModel
     {
@@ -20,7 +20,7 @@ namespace models
         public string? moviePoster { get; set; }
         public string? movieBackPoster { get; set; }
         public bool? isUpcoming { get; set; }
-       
+
 
     }
 }

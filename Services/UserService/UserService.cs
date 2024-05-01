@@ -1,17 +1,17 @@
-﻿using _NET.Data;
-using _NET.Dtos.Movie;
-using _NET.Dtos.User;
-using _NET.Helper;
-using _NET.models;
+﻿using MultiLib.Dtos.Movie;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using MultiLib.Data;
+using MultiLib.Dtos.User;
+using MultiLib.Helper;
+using MultiLib.models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace _NET.Services.UserService
+namespace MultiLib.Services.UserService
 {
     public class UserService : IUserService
     {
@@ -36,7 +36,7 @@ namespace _NET.Services.UserService
             _context = context;
         }
 
-        
+
         public async Task<ServiceResponse<List<GetUserDto>>> GetAllUsers()
         {
             var serviceResponse = new ServiceResponse<List<GetUserDto>>();
@@ -52,19 +52,19 @@ namespace _NET.Services.UserService
         {
             var serviceResponse = new ServiceResponse<AuthUserDto>();
             //var user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
-            
+
             // check if user/username is awailable in databaseor not
-            var dbuser =  _context.Users.FirstOrDefault(u => u.Username == username);
-            if(dbuser == null)
+            var dbuser = _context.Users.FirstOrDefault(u => u.Username == username);
+            if (dbuser == null)
             {
                 serviceResponse.Message = "User not found";
                 serviceResponse.Success = false;
-            }  
+            }
             // varify user password is match with hash password or not
-            else if(dbuser != null && PasswordHasher.VerifyPassword(password, dbuser.Password))
+            else if (dbuser != null && PasswordHasher.VerifyPassword(password, dbuser.Password))
             {
                 //henerate tocken for user when login
-               dbuser.Token = CreateJwt(dbuser);
+                dbuser.Token = CreateJwt(dbuser);
                 var authUserDto = new AuthUserDto
                 {
                     Username = dbuser.Username,
@@ -102,7 +102,7 @@ namespace _NET.Services.UserService
             return serviceResponse;
         }
 
-        
+
 
         public async Task<ServiceResponse<List<RegisterUserDto>>> RegisterUser(RegisterUserDto newUser)
         {
@@ -154,7 +154,7 @@ namespace _NET.Services.UserService
             return await _context.Users.AnyAsync(u => u.Email == email);
 
         }
-        
+
 
         // check password strength : length , Alphanumeric and special chars
         private string CheckPasswordStrengt(string password)
@@ -162,7 +162,7 @@ namespace _NET.Services.UserService
 
             StringBuilder sb = new StringBuilder();
             if (password.Length < 8)
-                sb.Append("minimum 8 characters required"+Environment.NewLine);
+                sb.Append("minimum 8 characters required" + Environment.NewLine);
             if (!(Regex.IsMatch(password, "[a-z]") && Regex.IsMatch(password, "[A-Z]") && Regex.IsMatch(password, "[0-9]")))
                 sb.Append("password should be Alphanumeric" + Environment.NewLine);
             if (!Regex.IsMatch(password, @"[\W_]"))
@@ -201,7 +201,7 @@ namespace _NET.Services.UserService
             return jwtTockenHandler.WriteToken(token);
         }
 
-        
+
     }
 
 }

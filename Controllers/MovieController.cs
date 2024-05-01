@@ -1,19 +1,19 @@
-﻿using _NET.Data;
-using _NET.Dtos.Movie;
-using _NET.models;
-using _NET.Services.MovieService;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MultiLib.Data;
+using MultiLib.Dtos.Movie;
+using MultiLib.models;
+using MultiLib.Services.MovieService;
 
 
-namespace _NET.Controllers
+namespace MultiLib.Controllers
 {
     //[Authorize]
     [ApiController]
     [Route("[controller]")]
     public class MovieController : Controller
     {
-        private readonly DataContext _context; 
+        private readonly DataContext _context;
         //interface
         private readonly IMovieService _movieService;
         // constructor to add services in here
@@ -58,7 +58,8 @@ namespace _NET.Controllers
         public async Task<ActionResult<ServiceResponse<List<GetMovieDto>>>> UpdateMovie(UpdateMovieDto updatedMovie)
         {
             var response = await _movieService.UpdateMovie(updatedMovie);
-            if (response.Data == null) {
+            if (response.Data == null)
+            {
                 return NotFound(response);
             }
             return Ok(response);

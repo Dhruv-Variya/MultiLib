@@ -1,4 +1,4 @@
-namespace _NET;
+namespace MultiLib;
 
 public class WeatherForecast
 {

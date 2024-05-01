@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace models
+namespace MultiLib.models
 {
     public class Movie
     {
@@ -19,6 +19,6 @@ namespace models
         public string? TreailerURL { get; set; } = "youtube.com";
         public string? Description { get; set; }
         public byte[]? MoviePoster { get; set; }
-       
+
     }
 }

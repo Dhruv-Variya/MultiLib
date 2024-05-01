@@ -1,12 +1,12 @@
-﻿using _NET.Data;
-using _NET.Dtos.seriesDto;
-using _NET.Migrations;
-using _NET.models;
+﻿using MultiLib.Migrations;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using models;
+using MultiLib.models;
+using MultiLib.Data;
+using MultiLib.Dtos.seriesDto;
+using MultiLib.models;
 
-namespace _NET.Services.SeriesService
+namespace MultiLib.Services.SeriesService
 {
     public class SeriesService : ISeriesService
     {
@@ -91,18 +91,18 @@ namespace _NET.Services.SeriesService
         {
             var serviceResponse = new ServiceResponse<getSeriesDto>();
             try
-            {              
-                var seriesEntity = await _context.series.FirstOrDefaultAsync(c => c.itemId == id);        
+            {
+                var seriesEntity = await _context.series.FirstOrDefaultAsync(c => c.itemId == id);
                 if (seriesEntity == null)
                 {
                     serviceResponse.Success = false;
                     serviceResponse.Message = $"Series with ID {id} not found";
                     return serviceResponse;
-                }               
-                var seriesDto = _mapper.Map<getSeriesDto>(seriesEntity);             
+                }
+                var seriesDto = _mapper.Map<getSeriesDto>(seriesEntity);
                 var seasonsFromDb = await _context.seasons
                     .Where(s => s.itemCode == seriesEntity.itemCode)
-                    .ToListAsync();              
+                    .ToListAsync();
                 seriesDto.NumberOfSeasons = seasonsFromDb.Count;
                 seriesDto.SeasonData = new List<getSeasonDto>();
 
@@ -112,19 +112,19 @@ namespace _NET.Services.SeriesService
                     {
                         SeasonNumber = seasonEntity.seasonNumber,
                         SeasonName = seasonEntity.seasonName,
-                        TotalEpisodes = 0, 
+                        TotalEpisodes = 0,
                         Episodes = new List<getEpisodeDto>()
                     };
 
-                    
+
                     var episodesFromDb = await _context.episodes
                         .Where(e => e.itemCode == seriesEntity.itemCode && e.seasonNumber == seasonEntity.seasonNumber)
-                        .ToListAsync();                    
+                        .ToListAsync();
                     seasonDto.Episodes = _mapper.Map<List<getEpisodeDto>>(episodesFromDb);
-                    seasonDto.TotalEpisodes = episodesFromDb.Count;                   
+                    seasonDto.TotalEpisodes = episodesFromDb.Count;
                     seriesDto.SeasonData.Add(seasonDto);
                 }
-             
+
                 var categoryIds = await _context.itemCatagories
                     .Where(ic => ic.itemCode == seriesEntity.itemCode)
                     .Select(ic => ic.catagoryId)
@@ -134,7 +134,7 @@ namespace _NET.Services.SeriesService
                     .Where(c => categoryIds.Contains(c.catagoryId))
                     .Select(c => c.CatagoryName)
                     .ToListAsync();
-            
+
                 var languageIds = await _context.itemLanguages
                     .Where(ic => ic.itemCode == seriesEntity.itemCode)
                     .Select(ic => ic.languageId)
@@ -145,18 +145,18 @@ namespace _NET.Services.SeriesService
                     .Select(l => l.languageName)
                     .ToListAsync();
 
-               
+
                 seriesDto.categories = categories;
                 seriesDto.languages = languages;
 
-                
+
                 serviceResponse.Data = seriesDto;
                 serviceResponse.Success = true;
                 serviceResponse.Message = "Success";
             }
             catch (Exception ex)
             {
-                
+
                 serviceResponse.Success = false;
                 serviceResponse.Message = ex.Message;
             }
@@ -166,7 +166,7 @@ namespace _NET.Services.SeriesService
         #endregion
 
         #region Add Seriese
-        public async  Task<ServiceResponse<List<getSeriesDto>>> AddSeries(addSeriesDto newSeries)
+        public async Task<ServiceResponse<List<getSeriesDto>>> AddSeries(addSeriesDto newSeries)
         {
             var serviceResponse = new ServiceResponse<List<getSeriesDto>>();
             var series = _mapper.Map<seriesModel>(newSeries);
@@ -400,7 +400,7 @@ namespace _NET.Services.SeriesService
 
         }
 
-       
+
         #endregion
     }
 }

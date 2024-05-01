@@ -1,4 +1,4 @@
-﻿namespace _NET.models
+﻿namespace MultiLib.models
 {
     public class ServiceResponse<T>
     {
