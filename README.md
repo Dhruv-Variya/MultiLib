@@ -113,3 +113,176 @@
   "message": "Success"
 }
 ```
+
+
+## API Reference
+
+#### Get all series 
+- Not Reuired any Parameters.
+```http
+  GET /Series/GetAll
+```
+
+
+#### Get series  By Id
+
+```http
+  GET /Series/GetseriesById/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `integer` | **Required**. Id of item to fetch |
+
+#### Add series 
+```http
+  Post /Series/AddSeries
+```
+
+- Object to Pass In Parameters
+```Code
+{
+  "itemCode": "string",
+  "itemTitle": "string",
+  "itemType": "string",
+  "itemCast": "string",
+  "itemRating": "string",
+  "itemReleaseDate": "string",
+  "itemTrailerURL": "string",
+  "itemDescription": "string",
+  "itemPoster": "string",
+  "itemBackPoster": "string",
+  "itemSeasons": 0,
+  "isUpcoming": true,
+  "seriesCategoryIds": [
+    0
+  ],
+  "seriesLanguagesIds": [
+    0
+  ]
+}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `itemCode`      | `string` | **Required**. Code That can be Uniue |
+| `itemTitle`      | `string` | **Required**. Title |
+| `itemType`      | `string` | **Required**. Type Of Content(Web series, TV series , Anime Etc.) |
+| `itemCast`      | `string` | **Required**. Cast |
+| `itemRating`      | `string` | **Required**. Ratings |
+| `itemReleaseDate`      | `string` | **Required**. Release Date |
+| `itemTrailerURL`      | `string` | **Required**. Trailer URL(Probably Youtube URL) |
+| `itemDescription`      | `string` | **Required**. Description |
+| `itemPoster`      | `string` | **Required**. Image Url |
+| `itemBackPoster`      | `string` | **Required**. Back poster Url |
+| `itemSeasons`      | `integer` | **Required** |
+| `isUpcoming`      | `Bool` | **Required** |
+| `seriesCategoryIds`      | `Array Of Integers` | **Required** Id of Catagories from Catagories table|
+| `seriesLanguagesIds`      | `Array Of Integers` | **Required**. Id of Languages from languages table |
+
+
+#### Update series 
+```http
+  Put /Series/UpdateSeries
+```
+- Object to pass in parameters is same as **Add series**
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `itemCode`      | `string` | **Required**. Code That can be Uniue |
+| `itemTitle`      | `string` | **Required**. Title |
+| `itemType`      | `string` | **Required**. Type Of Content(Web series, TV series , Anime Etc.) |
+| `itemCast`      | `string` | **Required**. Cast |
+| `itemRating`      | `string` | **Required**. Ratings |
+| `itemReleaseDate`      | `string` | **Required**. Release Date |
+| `itemTrailerURL`      | `string` | **Required**. Trailer URL(Probably Youtube URL) |
+| `itemDescription`      | `string` | **Required**. Description |
+| `itemPoster`      | `string` | **Required**. Image Url |
+| `itemBackPoster`      | `string` | **Required**. Back poster Url |
+| `itemSeasons`      | `integer` | **Required** |
+| `isUpcoming`      | `Bool` | **Required** |
+| `seriesCategoryIds`      | `Array Of Integer` | **Required** Id of Catagories from Catagories table|
+| `seriesLanguagesIds`      | `Array Of Integer` | **Required**. Id of Languages from languages table |
+
+#### Delete series 
+
+```http
+  Delete /Series/DleteSeries/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `integer` | **Required**. Id of item to Delete |
+
+
+#### Add Seasons and Episodes to respective series 
+```http
+  Post /Series/AddSeriesAndEpisodes
+```
+- Object to Pass In Parameters
+```Code
+[
+  {
+    "itemCode": "string",
+    "seasonNumber": 0,
+    "seasonName": "string",
+    "episodes": [
+      {
+        "episodeNumber": 0,
+        "episodeName": "string",
+        "episodeDescription": "string",
+        "episodeRating": "string",
+        "episodeReleaseDate": "string",
+        "poster": "string"
+      }
+    ]
+  }
+]
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `itemCode`      | `string` | **Required**. Uniue Item Code Of series |
+| `seasonNumber`      | `Integer` | **Required**. Season Number |
+| `seasonName`      | `string` | **Required**. Season Name |
+| `episodes`      | `List Of 'episodes' Object` | **Required**. Uniue Item Code Of series |
+| `episodeNumber`      | `Integer` | **Required**. Episode Number |
+| `episodeName`      | `string` | **Required**. Episode Name |
+| `episodeDescription`      | `string` | **Required**. Description |
+| `episodeRating`      | `string` | **Required**. Rating |
+| `episodeReleaseDate`      | `string` | **Required**. Release Date |
+| `poster`      | `string` | **Required**. Poster Image Url |
+
+
+
+#### Update Season
+
+```http
+  Put /Series/UpdateSeason
+```
+- Object to Pass In Parameters
+```Code
+{
+  "itemCode": "string",
+  "seasonNumber": 0,
+  "seasonName": "string"
+}
+```
+
+#### Update Episode
+```http
+  Put /Series/UpdateEpisode
+```
+- Object to Pass In Parameters
+```Code
+  {
+  "itemCode": "string",
+  "seasonNumber": 0,
+  "episodeNumber": 0,
+  "episodeName": "string",
+  "episodeDescription": "string",
+  "episodeRating": "string",
+  "episodeReleaseDate": "string",
+  "poster": "string"
+}
+```
