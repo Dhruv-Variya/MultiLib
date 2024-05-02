@@ -5,8 +5,6 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLib.ContentAPI", "MultiLib.ContentAPI.csproj", "{E7EE0B95-17B5-40D4-8BD3-02A071B3E3D6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentService", "..\ContentService\ContentService.csproj", "{DD5D6E69-E145-40FF-BFD3-FBBA1D0B6AE7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLib.Core", "..\MultiLib.Core\MultiLib.Core.csproj", "{D16ACD7C-E30E-49B8-9AFB-B6FB4680402D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLib.Auth", "..\MultiLib.Auth\MultiLib.Auth.csproj", "{DF1B66A6-26B7-4CF7-8B25-63B08ED4239F}"
@@ -21,10 +19,6 @@ Global
 		{E7EE0B95-17B5-40D4-8BD3-02A071B3E3D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7EE0B95-17B5-40D4-8BD3-02A071B3E3D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7EE0B95-17B5-40D4-8BD3-02A071B3E3D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD5D6E69-E145-40FF-BFD3-FBBA1D0B6AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD5D6E69-E145-40FF-BFD3-FBBA1D0B6AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD5D6E69-E145-40FF-BFD3-FBBA1D0B6AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD5D6E69-E145-40FF-BFD3-FBBA1D0B6AE7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D16ACD7C-E30E-49B8-9AFB-B6FB4680402D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D16ACD7C-E30E-49B8-9AFB-B6FB4680402D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D16ACD7C-E30E-49B8-9AFB-B6FB4680402D}.Release|Any CPU.ActiveCfg = Release|Any CPU
