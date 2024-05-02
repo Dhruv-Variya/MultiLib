@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace MainService.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -104,27 +103,6 @@ namespace MainService.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "movies",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cast = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Lang = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Rating = table.Column<float>(type: "real", nullable: true),
-                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    TreailerURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MoviePoster = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_movies", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "movieStorage",
                 columns: table => new
                 {
@@ -144,21 +122,6 @@ namespace MainService.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_movieStorage", x => x.movieId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "posts",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    movie_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    movie_url = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_posts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -242,13 +205,7 @@ namespace MainService.Migrations
                 name: "languages");
 
             migrationBuilder.DropTable(
-                name: "movies");
-
-            migrationBuilder.DropTable(
                 name: "movieStorage");
-
-            migrationBuilder.DropTable(
-                name: "posts");
 
             migrationBuilder.DropTable(
                 name: "seasons");
