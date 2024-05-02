@@ -1,9 +1,9 @@
-<h1 align="center">MovieMainService</h1>
+<h1 align="center">MultiLib(Multi Purpose Library)</h1>
 
 # .NET WEB API
 
-.NET API solution with multiple microservices that can be used in multiple projects.
-- This Is My Personal Project To Learn .NET Web API.
+.NET API solution with multiple Projects.
+- This Is My Personal Project To Explore and Learn .NET Web API.
 - I Have Used Multiple projects in single solution Method.
 
 ## Tech Stack
