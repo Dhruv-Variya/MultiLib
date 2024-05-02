@@ -5,7 +5,7 @@ using MultiLib.Auth.Services.UserService;
 
 namespace MultiLib.Auth.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Auth/V1/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {

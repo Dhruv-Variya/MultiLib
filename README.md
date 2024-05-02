@@ -1,11 +1,11 @@
-<h1 align="center">MovieMainService</h1>
+<h1 align="center">MultiLib(Multi Purpose Library)</h1>
 
 # .NET WEB API
 
-.NET API solution with multiple microservices that can be used in multiple projects.
-- This Is My Personal Project To Learn .NET Web API.
+.NET API solution with multiple Projects.
+- This Is My Personal Project To Explore and Learn .NET Web API.
 - I Have Used Multiple projects in single solution Method.
-
+ 
 ## Tech Stack
 
 <p align="left"> 
@@ -28,6 +28,40 @@ Clone the project
 ```
 Setup In Visual Studio, Build And Run 🚀
 
+## Structure of this Project
+```code
+MultiLib Solution
+│
+├───MultiLib.Auth
+│   ├───Controllers             // Controllers for additional APIs
+│   ├───Data                    // Data access layer (Repositories)
+│   ├───Dtos                    // Data Transfer Objects
+│   ├───Helper                  // Helper Classes like Password_Hasher.
+│   ├───Migrations              // Ef Core Migrations
+│   ├───Models                  // Models.
+│   ├───AutoMapper.cs           // AutoMapper Configuration Class.
+│   └───Services                // Service classes for additional APIs
+│
+├───MultiLib.ContentAPI
+│   ├───Controllers             // Controllers for additional APIs
+│   ├───Data                    // Data access layer (Repositories)
+│   ├───Dtos                    // Data Transfer Objects
+│   ├───Migrations              // Ef Core Migrations
+│   ├───Models                  // Models.
+│   ├───AutoMapper.cs           // AutoMapper Configuration Class.
+│   └───Services                // Service classes for additional APIs
+│
+├───MultiLib.Core    // Class Library
+│   └───Different Classes       // To Add Reusable or Common Classes in this library for all the projects.
+│
+└───MultiLib.EcommerceAPI (Future)
+    ├───Controllers             // Controllers for additional APIs
+    ├───Data                    // Data access layer (Repositories)
+    ├───Dtos                    // Data Transfer Objects
+    ├───Migrations              // Ef Core Migrations
+    ├───Models                  // Models.
+    └───Services                // Service classes for additional APIs
+```
 ## API Reference
 
 #### Get all series 
