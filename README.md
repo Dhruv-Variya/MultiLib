@@ -1,4 +1,4 @@
-<h1 align="center">MultiLib</h1>
+<h1 align="center">MovieMainService</h1>
 
 # .NET WEB API
 
@@ -24,7 +24,7 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/Dhruv-Variya/MultiLib.git
+  git clone https://github.com/Dhruv-Variya/MovieMainService.git
 ```
 Setup In Visual Studio, Build And Run 🚀
 
