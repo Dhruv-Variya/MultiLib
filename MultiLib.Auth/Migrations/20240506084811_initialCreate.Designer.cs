@@ -11,7 +11,7 @@ using MultiLib.Auth.Data;
 namespace MultiLib.Auth.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240502112126_initialCreate")]
+    [Migration("20240506084811_initialCreate")]
     partial class initialCreate
     {
         /// <inheritdoc />

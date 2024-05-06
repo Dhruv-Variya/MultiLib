@@ -33,11 +33,14 @@ namespace MainService.Controllers
             }
             return Ok(response);
         }
+        //get all movies with analysis data
         [HttpGet("MoviesWithAnalysisData")]
         public async Task<ActionResult<ServiceResponse<IEnumerable<object>>>> GetMovieAnalysisData()
         {
             return Ok(await _movieService.GetMovieAnalysisData());
         }
+
+        //get spacific movie with analysis data
         [HttpGet("MoviesWithAnalysisDataById/{id}")]
         public async Task<ActionResult<ServiceResponse<IEnumerable<object>>>> GetMovieAnalysisDataById(int id)
         {
@@ -51,6 +54,8 @@ namespace MainService.Controllers
         {
             return Ok(await _movieService.GetMovieById(id));
         }
+
+
         //Add Movie
         [HttpPost("AddMovie")]
         public async Task<ActionResult<ServiceResponse<List<getMovieDto>>>> AddMovie(addMovieDto newMovie)

@@ -1,7 +1,6 @@
-using MainService.Data;
-using MainService.Services.movieManagementService;
-using MainService.Services.SeriesService;
 using Microsoft.EntityFrameworkCore;
+using MultiLib.TaskManagementAPI.Data;
+using MultiLib.TaskManagementAPI.Service.TaskManagementService;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add database context and connection string to migrate database using EfCore
@@ -17,8 +16,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 //Add Service to program.cs
 
-builder.Services.AddScoped<IMovieManagementService, movieManagementService>();
-builder.Services.AddScoped<ISeriesService, SeriesService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
+
 
 
 var app = builder.Build();
@@ -34,7 +33,7 @@ app.UseCors(options =>
 {
     options.AllowAnyHeader();
     options.AllowAnyMethod();
-    options.AllowAnyOrigin();   
+    options.AllowAnyOrigin();
 });
 
 app.UseStaticFiles();
