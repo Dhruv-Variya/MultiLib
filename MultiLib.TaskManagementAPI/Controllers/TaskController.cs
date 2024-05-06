@@ -49,7 +49,7 @@ namespace MultiLib.TaskManagementAPI.Controllers
 
 
         //delete Task
-        [HttpDelete("DleteTask")]
+        [HttpDelete("DeleteTask")]
         public async Task<ActionResult<ServiceResponse<getTaskDto>>> DeleteTask(ReqTaskModel reqTaskModel)
         {
             var response = await _taskService.DeleteTask(reqTaskModel);
