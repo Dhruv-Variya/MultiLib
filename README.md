@@ -24,7 +24,7 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/Dhruv-Variya/MovieMainService.git
+  git clone https://github.com/Dhruv-Variya/MultiLib.git
 ```
 Setup In Visual Studio, Build And Run 🚀
 
