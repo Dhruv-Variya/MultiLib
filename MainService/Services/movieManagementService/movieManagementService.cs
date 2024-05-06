@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using MainService.models;
 using MainService.Dtos.movieDto;
 using MainService.Data;
+using System.Text.RegularExpressions;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations;
 
 namespace MainService.Services.movieManagementService
 {
@@ -90,43 +94,54 @@ namespace MainService.Services.movieManagementService
         public async Task<ServiceResponse<getMovieDto>> GetMovieById(int id)
         {
             var serviceResponse = new ServiceResponse<getMovieDto>();
+            if (id == 0)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = $"Movie Id Reuired!!! It can not be Zero(0)";
+                return serviceResponse;
+            }
             var dbMovies = await _context.movieStorage.FirstOrDefaultAsync(c => c.movieId == id);
             if (dbMovies == null)
             {
                 serviceResponse.Success = false;
                 serviceResponse.Message = $"Movie with ID {id} not found";
+                return serviceResponse;
             }
-            else
-            {
-                var categoryIds = await _context.itemCatagories
+                try
+                {
+                    var categoryIds = await _context.itemCatagories
                        .Where(ic => ic.itemCode == dbMovies.movieCode)
                        .Select(ic => ic.catagoryId)
                        .ToListAsync();
 
-                var categories = await _context.Catagory
-                    .Where(c => categoryIds.Contains(c.catagoryId))
-                    .Select(c => c.CatagoryName)
-                    .ToListAsync();
+                    var categories = await _context.Catagory
+                        .Where(c => categoryIds.Contains(c.catagoryId))
+                        .Select(c => c.CatagoryName)
+                        .ToListAsync();
 
-                var languageIds = await _context.itemLanguages
-                    .Where(ic => ic.itemCode == dbMovies.movieCode)
-                    .Select(ic => ic.languageId)
-                    .ToListAsync();
+                    var languageIds = await _context.itemLanguages
+                        .Where(ic => ic.itemCode == dbMovies.movieCode)
+                        .Select(ic => ic.languageId)
+                        .ToListAsync();
 
-                var languages = await _context.languages
-                    .Where(c => languageIds.Contains(c.languageId))
-                    .Select(c => c.languageName)
-                    .ToListAsync();
+                    var languages = await _context.languages
+                        .Where(c => languageIds.Contains(c.languageId))
+                        .Select(c => c.languageName)
+                        .ToListAsync();
 
-                var dto = _mapper.Map<getMovieDto>(dbMovies);
-                dto.categories = categories;
-                dto.languages = languages;
+                    var dto = _mapper.Map<getMovieDto>(dbMovies);
+                    dto.categories = categories;
+                    dto.languages = languages;
 
-                serviceResponse.Data = dto;
-                serviceResponse.Success = true;
-                serviceResponse.Message = "succsess";
-            }
-
+                    serviceResponse.Data = dto;
+                    serviceResponse.Success = true;
+                    serviceResponse.Message = "succsess";
+                }
+                catch(Exception ex)
+                {
+                    serviceResponse.Success = false;
+                    serviceResponse.Message = ex.Message;
+                }
             return serviceResponse;
 
         }
@@ -136,67 +151,77 @@ namespace MainService.Services.movieManagementService
         public async Task<ServiceResponse<List<getMovieDto>>> AddMovies(addMovieDto newMovie)
         {
             var serviceResponse = new ServiceResponse<List<getMovieDto>>();
-            var movie = _mapper.Map<movieModel>(newMovie);
-
+            var validate = ValidationsAddMovie(newMovie);
             // Check if the movie code already exists
+
             if (await CheckMovieCodeExistAsync(newMovie.movieCode))
             {
-                serviceResponse.Message = "Movie Code Already Exist";
+                serviceResponse.Message = "Movie Already Exist Please Update Movie Code";
                 serviceResponse.Success = false;
                 return serviceResponse;
             }
-
-            try
+            // validate parameters
+            else if (!string.IsNullOrEmpty(validate))
             {
-                _context.movieStorage.Add(movie);
-                await _context.SaveChangesAsync(); // Save changes to get the movie ID
-
-                // Add a record to the analysis table
-                var analysisRecord = new analysis
-                {
-                    itemCode = movie.movieCode,
-                    itemType = "m",
-                    timesClicked = 0,
-                    upVote = 0,
-                    downVote = 0,
-                    trailerReach = 0,
-                };
-
-                _context.analysis.Add(analysisRecord);
-
-                // Add records to the itemCategories table
-                foreach (var categoryId in newMovie.movieCategoryIds)
-                {
-                    var itemCategoryRecord = new itemCatagories
-                    {
-                        itemCode = movie.movieCode,
-                        catagoryId = categoryId
-                    };
-                    _context.itemCatagories.Add(itemCategoryRecord);
-                }
-                // Add records to the itemlanguages table
-                foreach (var languageId in newMovie.movieLanguagesIds)
-                {
-                    var itemLanguageRecord = new itemLanguages
-                    {
-                        itemCode = movie.movieCode,
-                        languageId = languageId
-                    };
-                    _context.itemLanguages.Add(itemLanguageRecord);
-                }
-
-                await _context.SaveChangesAsync();
-
-                serviceResponse.Success = true;
-                serviceResponse.Message = "Success";
-                serviceResponse.Data = new List<getMovieDto> { _mapper.Map<getMovieDto>(movie) };
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions
+                serviceResponse.Message = validate.ToString();
                 serviceResponse.Success = false;
-                serviceResponse.Message = ex.Message;
             }
+            else
+            {
+                var movie = _mapper.Map<movieModel>(newMovie);
+                try
+                {
+                    _context.movieStorage.Add(movie);
+                    await _context.SaveChangesAsync(); // Save changes in db
+
+                    // Add a record to the analysis table
+                    var analysisRecord = new analysis
+                    {
+                        itemCode = movie.movieCode,
+                        itemType = "m",
+                        timesClicked = 0,
+                        upVote = 0,
+                        downVote = 0,
+                        trailerReach = 0,
+                    };
+
+                    _context.analysis.Add(analysisRecord);
+
+                    // Add records to the itemCategories table
+                    foreach (var categoryId in newMovie.movieCategoryIds)
+                    {
+                        var itemCategoryRecord = new itemCatagories
+                        {
+                            itemCode = movie.movieCode,
+                            catagoryId = categoryId
+                        };
+                        _context.itemCatagories.Add(itemCategoryRecord);
+                    }
+                    // Add records to the itemlanguages table
+                    foreach (var languageId in newMovie.movieLanguagesIds)
+                    {
+                        var itemLanguageRecord = new itemLanguages
+                        {
+                            itemCode = movie.movieCode,
+                            languageId = languageId
+                        };
+                        _context.itemLanguages.Add(itemLanguageRecord);
+                    }
+
+                    await _context.SaveChangesAsync();
+
+                    serviceResponse.Success = true;
+                    serviceResponse.Message = "Success";
+                    serviceResponse.Data = new List<getMovieDto> { _mapper.Map<getMovieDto>(movie) };
+                }
+                catch (Exception ex)
+                {
+                    // Handle exceptions
+                    serviceResponse.Success = false;
+                    serviceResponse.Message = ex.Message;
+                }
+            }
+            
 
             return serviceResponse;
         }
@@ -209,57 +234,70 @@ namespace MainService.Services.movieManagementService
         public async Task<ServiceResponse<getMovieDto>> UpdateMovie(updateMovieDto updatedMovie)
         {
             var serviceResponse = new ServiceResponse<getMovieDto>();
-
+            var validate = ValidationsUpdateMovie(updatedMovie);
             try
             {
+                
                 // Get the movie entity based on the provided movie ID
                 var dbMovie = await _context.movieStorage.FirstOrDefaultAsync(c => c.movieCode == updatedMovie.movieCode);
                 if (dbMovie == null)
                 {
-                    throw new Exception($"Movie with ID '{updatedMovie.movieCode}' not found");
+                    serviceResponse.Message = $"Movie with ID '{updatedMovie.movieCode}' not found";
+                    serviceResponse.Success = false;
+                    return serviceResponse;
                 }
-
-                // Update movie details
-                _mapper.Map(updatedMovie, dbMovie);
-
-                // Remove existing categories associated with the updated movieCode
-                var existingCategories = await _context.itemCatagories
-                    .Where(ic => ic.itemCode == updatedMovie.movieCode)
-                    .ToListAsync();
-
-                _context.itemCatagories.RemoveRange(existingCategories);
-
-
-                // Remove existing languages associated with the updated movieCode
-                var existingLanguages = await _context.itemLanguages
-                    .Where(ic => ic.itemCode == updatedMovie.movieCode)
-                    .ToListAsync();
-
-                _context.itemLanguages.RemoveRange(existingLanguages);
-
-                // Add new categories to itemCatagories table
-                foreach (var categoryId in updatedMovie.movieCategoryIds)
+                // validate parameters
+                else if (!string.IsNullOrEmpty(validate))
                 {
-                    var itemCategory = new itemCatagories
-                    {
-                        itemCode = updatedMovie.movieCode,
-                        catagoryId = categoryId
-                    };
-                    _context.itemCatagories.Add(itemCategory);
+                    serviceResponse.Message = validate.ToString();
+                    serviceResponse.Success = false;
                 }
-                // Add records to the itemlanguages table
-                foreach (var languageId in updatedMovie.movieLanguagesIds)
+                else
                 {
-                    var itemLanguageRecord = new itemLanguages
+
+                    // Update movie details
+                    _mapper.Map(updatedMovie, dbMovie);
+
+                    // Remove existing categories associated with the updated movieCode
+                    var existingCategories = await _context.itemCatagories
+                        .Where(ic => ic.itemCode == updatedMovie.movieCode)
+                        .ToListAsync();
+
+                    _context.itemCatagories.RemoveRange(existingCategories);
+
+
+                    // Remove existing languages associated with the updated movieCode
+                    var existingLanguages = await _context.itemLanguages
+                        .Where(ic => ic.itemCode == updatedMovie.movieCode)
+                        .ToListAsync();
+
+                    _context.itemLanguages.RemoveRange(existingLanguages);
+
+                    // Add new categories to itemCatagories table
+                    foreach (var categoryId in updatedMovie.movieCategoryIds)
                     {
-                        itemCode = updatedMovie.movieCode,
-                        languageId = languageId
-                    };
-                    _context.itemLanguages.Add(itemLanguageRecord);
+                        var itemCategory = new itemCatagories
+                        {
+                            itemCode = updatedMovie.movieCode,
+                            catagoryId = categoryId
+                        };
+                        _context.itemCatagories.Add(itemCategory);
+                    }
+                    // Add records to the itemlanguages table
+                    foreach (var languageId in updatedMovie.movieLanguagesIds)
+                    {
+                        var itemLanguageRecord = new itemLanguages
+                        {
+                            itemCode = updatedMovie.movieCode,
+                            languageId = languageId
+                        };
+                        _context.itemLanguages.Add(itemLanguageRecord);
+                    }
+
+                    serviceResponse.Success = true;
+                    serviceResponse.Data = _mapper.Map<getMovieDto>(dbMovie);
                 }
 
-                serviceResponse.Success = true;
-                serviceResponse.Data = _mapper.Map<getMovieDto>(dbMovie);
             }
             catch (Exception ex)
             {
@@ -386,6 +424,62 @@ namespace MainService.Services.movieManagementService
             return await _context.movieStorage.AnyAsync(u => u.movieCode == movieCode);
 
         }
+
+        private string ValidationsAddMovie(addMovieDto newMovie)
+        {
+            StringBuilder sb = new StringBuilder();
+            
+            if (newMovie.movieTitle is null || newMovie.movieTitle.Equals("string"))
+                sb.Append("movieTitle Required!!!" + Environment.NewLine);
+            if (newMovie.movieCast is null || newMovie.movieCast.Equals("string"))
+                sb.Append("movieCast Required!!!" + Environment.NewLine);
+            if (newMovie.movieRating is null || newMovie.movieRating.Equals("string"))
+                sb.Append("movieRating Required!!!" + Environment.NewLine);        
+            if (newMovie.movieReleaseDate is null || newMovie.movieReleaseDate.Equals("string"))
+                sb.Append("movieReleaseDate Required!!!" + Environment.NewLine);
+            if (newMovie.movieTrailerURL is null || newMovie.movieTrailerURL.Equals("string"))
+                sb.Append("movieTrailerURL Required!!!" + Environment.NewLine);
+            if (newMovie.movieDescription is null || newMovie.movieDescription.Equals("string"))
+                sb.Append("movieDescription Required!!!" + Environment.NewLine);
+            if (newMovie.moviePoster is null || newMovie.moviePoster.Equals("string"))
+                sb.Append("moviePoster Required!!!" + Environment.NewLine);
+            if (newMovie.movieBackPoster is null || newMovie.movieBackPoster.Equals("string"))
+                sb.Append("movieBackPoster Required!!!" + Environment.NewLine);
+            if (newMovie.movieCategoryIds.Count == 0 || newMovie.movieCategoryIds.Contains(0))
+                sb.Append("movieCategoryIds Required!!! OR it can not be ZERO(0)" + Environment.NewLine);
+            if (newMovie.movieLanguagesIds.Count == 0 || newMovie.movieLanguagesIds.Contains(0))
+                sb.Append("movieLanguagesIds Required!!! OR it can not be ZERO(0)" + Environment.NewLine);
+            return sb.ToString();
+        }
+
+        private string ValidationsUpdateMovie(updateMovieDto updatedMovie)
+        {
+            StringBuilder sb = new StringBuilder();
+            
+            if (updatedMovie.movieTitle is null || updatedMovie.movieTitle.Equals("string"))
+                sb.Append("movieTitle Required!!!" + Environment.NewLine);
+            if (updatedMovie.movieCast is null || updatedMovie.movieCast.Equals("string"))
+                sb.Append("movieCast Required!!!" + Environment.NewLine);
+            if (updatedMovie.movieRating is null || updatedMovie.movieRating.Equals("string"))
+                sb.Append("movieRating Required!!!" + Environment.NewLine);
+            if (updatedMovie.movieReleaseDate is null || updatedMovie.movieReleaseDate.Equals("string"))
+                sb.Append("movieReleaseDate Required!!!" + Environment.NewLine);
+            if (updatedMovie.movieTrailerURL is null || updatedMovie.movieTrailerURL.Equals("string"))
+                sb.Append("movieTrailerURL Required!!!" + Environment.NewLine);
+            if (updatedMovie.movieDescription is null || updatedMovie.movieDescription.Equals("string"))
+                sb.Append("movieDescription Required!!!" + Environment.NewLine);
+            if (updatedMovie.moviePoster is null || updatedMovie.moviePoster.Equals("string"))
+                sb.Append("moviePoster Required!!!" + Environment.NewLine);
+            if (updatedMovie.movieBackPoster is null || updatedMovie.movieBackPoster.Equals("string"))
+                sb.Append("movieBackPoster Required!!!" + Environment.NewLine);
+            if (updatedMovie.movieCategoryIds.Count == 0 || updatedMovie.movieCategoryIds.Contains(0))
+                sb.Append("movieCategoryIds Required!!! OR it can not be ZERO(0)" + Environment.NewLine);
+            if (updatedMovie.movieLanguagesIds.Count == 0 || updatedMovie.movieLanguagesIds.Contains(0))
+                sb.Append("movieLanguagesIds Required!!! OR it can not be ZERO(0)" + Environment.NewLine);
+            return sb.ToString();
+        }
+
         #endregion
     }
 }
+
