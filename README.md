@@ -51,6 +51,15 @@ MultiLib Solution
 │   ├───AutoMapper.cs           // AutoMapper Configuration Class.
 │   └───Services                // Service classes for additional APIs
 │
+├───MultiLib.TaskManagementAPI
+│   ├───Controllers             // Controllers for additional APIs
+│   ├───Data                    // Data access layer (Repositories)
+│   ├───Dtos                    // Data Transfer Objects
+│   ├───Migrations              // Ef Core Migrations
+│   ├───Models                  // Models.
+│   ├───AutoMapper.cs           // AutoMapper Configuration Class.
+│   └───Services                // Service classes for additional APIs
+│
 ├───MultiLib.Core    // Class Library
 │   └───Different Classes       // To Add Reusable or Common Classes in this library for all the projects.
 │
@@ -62,7 +71,40 @@ MultiLib Solution
     ├───Models                  // Models.
     └───Services                // Service classes for additional APIs
 ```
-## API Reference
+
+## API Reference for MultiLib.Auth
+
+#### Get all Users(for Admin) 
+- Not Reuired any Parameters.
+```http
+  GET /Auth/V1/User
+```
+
+
+#### register user
+- Validations like password formate and no repeatation of username and email are implemented in api.
+```http
+  POST /Auth/V1/User/register
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `fname`      | `string` | **Required**. FirstName |
+| `lname`      | `string` | **Required**. LastName |
+| `username`   | `string` | **Required**. UserName |
+| `password`   | `string` | **Required**. Password |
+| `email`      | `string` | **Required**. Email |
+
+#### authenticate user with jwt
+```http
+  POST /Auth/V1/User/authenticate
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `username`   | `string` | **Required**. User name |
+| `password`   | `string` | **Required**. Password |
+
+
+## API Reference for Multilib.ContentAPI
 
 #### Get all series 
 - Not Reuired any Parameters.
@@ -318,6 +360,54 @@ MultiLib Solution
   "message": "Success"
 }
 ```
+
+
+## API Reference for MultiLib.TaskManagementAPI
+
+#### Get all Tasks For Spacific User
+```http
+  POST /Task/GetAll
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `userId`   | `intiger` | **Required**. User Id |
+
+#### Add Task
+```http
+  POST /Task/AddTask
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `userId`   | `intiger` | **Required**. User Id |
+| `statusId`   | `intiger` | **Required**. statusId point to other table in database |
+| `priorityId`   | `intiger` | **Required**. priorityId point to other table in database |
+| `dueDate`   | `string` | **Required**. due date of task(in string format) |
+| `title`   | `string` | **Required**. title of task |
+| `description`   | `string` | **Required**. description |
+
+#### Update Task
+```http
+  POST /Task/UpdateTask
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `userId`   | `intiger` | **Required**. User Id |
+| `taskId`   | `intiger` | **Required**. task Id |
+| `statusId`   | `intiger` | **Required**. statusId point to other table in database |
+| `priorityId`   | `intiger` | **Required**. priorityId point to other table in database |
+| `dueDate`   | `string` | **Required**. due date of task(in string format) |
+| `title`   | `string` | **Required**. title of task |
+| `description`   | `string` | **Required**. description |
+
+#### Delete Task
+```http
+  DELETE /Task/DeleteTask
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `userId`   | `intiger` | **Required**. User Id |
+| `taskId`   | `intiger` | **Required**. task Id |
+
 
 ## Roadmap
 
