@@ -106,6 +106,7 @@ MultiLib Solution
 
 ## API Reference for Multilib.ContentAPI
 
+### Seriese Model
 #### Get all series 
 - Not Reuired any Parameters.
 ```http
@@ -128,30 +129,6 @@ MultiLib Solution
   Post /Series/AddSeries
 ```
 
-- Object to Pass In Parameters
-```Code
-{
-  "itemCode": "string",
-  "itemTitle": "string",
-  "itemType": "string",
-  "itemCast": "string",
-  "itemRating": "string",
-  "itemReleaseDate": "string",
-  "itemTrailerURL": "string",
-  "itemDescription": "string",
-  "itemPoster": "string",
-  "itemBackPoster": "string",
-  "itemSeasons": 0,
-  "isUpcoming": true,
-  "seriesCategoryIds": [
-    0
-  ],
-  "seriesLanguagesIds": [
-    0
-  ]
-}
-```
-
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `itemCode`      | `string` | **Required**. Code That can be Uniue |
@@ -166,15 +143,15 @@ MultiLib Solution
 | `itemBackPoster`      | `string` | **Required**. Back poster Url |
 | `itemSeasons`      | `integer` | **Required** |
 | `isUpcoming`      | `Bool` | **Required** |
-| `seriesCategoryIds`      | `Array Of Integers` | **Required** Id of Catagories from Catagories table|
-| `seriesLanguagesIds`      | `Array Of Integers` | **Required**. Id of Languages from languages table |
+| `seriesCategoryIds`      | `Array Of Integers` | **Required**  List Of Id's of Catagory from Catagories table|
+| `seriesLanguagesIds`      | `Array Of Integers` | **Required**. List Of Id's of Language from languages table |
 
 
 #### Update series 
 ```http
   Put /Series/UpdateSeries
 ```
-- Object to pass in parameters is same as **Add series**
+- parameters are same as **Add series**
   
 #### Delete series 
 
@@ -259,40 +236,6 @@ MultiLib Solution
 }
 ```
 
-
-- Movie API Example : 
-```
-{
-  "data": [
-    {
-      "movieId": 1,
-      "movieCode": "ukjwf",
-      "movieTitle": "AVATAR",
-      "movieCast": "Sam Worthington",
-      "movieRating": "7.9",
-      "movieReleaseDate": "18/12/2003",
-      "movieTrailerURL": "https://www.youtube.com/watch?v=5PSNL1qE6VY",
-      "movieDescription": "AVATAR",
-      "moviePoster": "https://i.etsystatic.com/18242346/r/il/864ece/3727281843/il_570xN.3727281843_n4vs.jpg",
-      "movieBackPoster": "https://economictimes.indiatimes.com/thumb/msid-94687295,width-1200,height-900,resizemode-4,imgsize-95348/avatar-4-producer-jon-landau-says-first-act-of-movie-is-complete.jpg?from=mdr",
-      "isUpcoming": false,
-      "categories": [
-        "Action",
-        "Adventure",
-        "Comedy"
-      ],
-      "languages": [
-        "English",
-        "Spanish",
-        "French",
-        "Hindi"
-      ]
-    }
-  ],
-  "success": true,
-  "message": "Success"
-}
-```
 - Seriese API Example : 
 ```
 {
@@ -353,6 +296,111 @@ MultiLib Solution
             }
           ]
         }
+      ]
+    }
+  ],
+  "success": true,
+  "message": "Success"
+}
+```
+### Movie Model
+
+#### Get all Movies
+- Not Reuired any Parameters.
+```http
+  GET /movieManagement/GetAll
+```
+
+#### Get Movie  By Id
+
+```http
+  GET /movieManagement/GetMovieById/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `integer` | **Required**. Id of item to fetch |
+
+#### Add Movie 
+```http
+  Post /movieManagement/AddMovie
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `movieCode`      | `string` | **Required**. Code That can be Unique |
+| `movieTitle`      | `string` | **Required**. Title |
+| `movieCast`      | `string` | **Required**. Cast |
+| `movieRating`      | `string` | **Required**. Ratings |
+| `movieReleaseDate`      | `string` | **Required**. Release Date |
+| `movieTrailerURL`      | `string` | **Required**. Trailer URL(Probably Youtube video URL) |
+| `movieDescription`      | `string` | **Required**. Description |
+| `moviePoster`      | `string` | **Required**. Image Url |
+| `movieBackPoster`      | `string` | **Required**. Back poster Url |
+| `isUpcoming`      | `Bool` | **Required**. is upcoming release or not|
+| `movieCategoryIds`      | `Array Of Integers` | **Required**  List Of Id's of Catagory from Catagories table|
+| `movieLanguagesIds`      | `Array Of Integers` | **Required**. List Of Id's of Language from languages table |
+
+
+#### Update Movie 
+```http
+  Put /movieManagement/updateMovie
+```
+- parameters are same as **Add Movie**
+  
+#### Delete Movie 
+
+```http
+  Delete /movieManagement/DleteMovie/{id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `integer` | **Required**. Id of item to Delete |
+
+
+#### analysis is data that represents stats of reach of content.
+#### Get all Movies with analysis data
+- Not Reuired any Parameters.
+```http
+  GET /movieManagement/MoviesWithAnalysisData
+```
+
+#### Get Movie with analysis data By Id
+
+```http
+  GET /movieManagement/MoviesWithAnalysisDataById/{id}
+```
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `integer` | **Required**. Id of item to fetch |
+
+- Movie API Example : 
+```
+{
+  "data": [
+    {
+      "movieId": 1,
+      "movieCode": "ukjwf",
+      "movieTitle": "AVATAR",
+      "movieCast": "Sam Worthington",
+      "movieRating": "7.9",
+      "movieReleaseDate": "18/12/2003",
+      "movieTrailerURL": "https://www.youtube.com/watch?v=5PSNL1qE6VY",
+      "movieDescription": "AVATAR",
+      "moviePoster": "https://i.etsystatic.com/18242346/r/il/864ece/3727281843/il_570xN.3727281843_n4vs.jpg",
+      "movieBackPoster": "https://economictimes.indiatimes.com/thumb/msid-94687295,width-1200,height-900,resizemode-4,imgsize-95348/avatar-4-producer-jon-landau-says-first-act-of-movie-is-complete.jpg?from=mdr",
+      "isUpcoming": false,
+      "categories": [
+        "Action",
+        "Adventure",
+        "Comedy"
+      ],
+      "languages": [
+        "English",
+        "Spanish",
+        "French",
+        "Hindi"
       ]
     }
   ],
