@@ -2,9 +2,9 @@
 
 # .NET WEB API
 
-.NET API solution with multiple Projects.
-- This Is My Personal Project To Explore and Learn .NET Web API.
-- I Have Used Multiple projects in single solution Method.
+.NET API solution with multiple projects.
+- This is my personal project to explore and learn .NET Web API.
+- I have used multiple projects in single solution method.
  
 ## Tech Stack
 
@@ -26,9 +26,10 @@ Clone the project
 ```bash
   git clone https://github.com/Dhruv-Variya/MultiLib.git
 ```
-Setup In Visual Studio, Build And Run 🚀
+Setup In Visual Studio, Install reuired Packages, Build And Run 🚀
 
 ## Structure of this Project
+
 ```code
 MultiLib Solution
 │
