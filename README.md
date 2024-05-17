@@ -1,12 +1,17 @@
 <h1 align="center">MultiLib(Multi Purpose Library)</h1>
 
-# .NET WEB API
+## Introduction
 
 .NET API solution with multiple projects.
 - This is my personal project to explore and learn .NET Web API.
 - I have used multiple projects in single solution method.
- 
-## Tech Stack
+- MultiLib is a comprehensive library management system built to explore and implement various functionalities of .NET Web API. It includes modules for user authentication, content management, and task management, with future plans for e-commerce integration.
+
+### Tech Stack
+- **Language**: C#
+- **Framework**: .NET
+- **Database**: MySQL
+- **Tools**: Postman
 
 <p align="left"> 
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp" width="50" height="50"/>
@@ -26,7 +31,10 @@ Clone the project
 ```bash
   git clone https://github.com/Dhruv-Variya/MultiLib.git
 ```
-Setup In Visual Studio, Install required Packages, Build And Run 🚀
+1.Open the solution in Visual Studio.
+2.Restore NuGet packages.
+3.Configure connection strings in appsettings.json.
+4.Build and run the project.
 
 ## Structure of this Project
 
@@ -467,5 +475,8 @@ MultiLib Solution
 - Implement Complete Authentication And Role Based Authorization.
 
 - Improve Api Performance By Applying Some Optimal Solutions Like caching, Api Gateway, Request Limit and many more.
+
+## Conclusion
+- MultiLib is designed to be a robust and extensible system for multiple projects. it serves as a comprehensive learning project for .NET Web API development.
 
 
