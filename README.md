@@ -26,7 +26,7 @@ Clone the project
 ```bash
   git clone https://github.com/Dhruv-Variya/MultiLib.git
 ```
-Setup In Visual Studio, Install reuired Packages, Build And Run 🚀
+Setup In Visual Studio, Install required Packages, Build And Run 🚀
 
 ## Structure of this Project
 
