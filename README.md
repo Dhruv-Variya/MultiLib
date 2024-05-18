@@ -31,10 +31,10 @@ Clone the project
 ```bash
   git clone https://github.com/Dhruv-Variya/MultiLib.git
 ```
-1.Open the solution in Visual Studio.
-2.Restore NuGet packages.
-3.Configure connection strings in appsettings.json.
-4.Build and run the project.
+ 1. Open the solution in Visual Studio.
+ 2. Restore NuGet packages.
+ 3. Configure connection strings in appsettings.json.
+ 4. Build and run the project.
 
 ## Structure of this Project
 
@@ -42,43 +42,43 @@ Clone the project
 MultiLib Solution
 │
 ├───MultiLib.Auth
-│   ├───Controllers             // Controllers for additional APIs
-│   ├───Data                    // Data access layer (Repositories)
-│   ├───Dtos                    // Data Transfer Objects
-│   ├───Helper                  // Helper Classes like Password_Hasher.
-│   ├───Migrations              // Ef Core Migrations
-│   ├───Models                  // Models.
-│   ├───AutoMapper.cs           // AutoMapper Configuration Class.
-│   └───Services                // Service classes for additional APIs
+│   ├───Controllers             
+│   ├───Data                    
+│   ├───Dtos                    
+│   ├───Helper                 
+│   ├───Migrations              
+│   ├───Models                  
+│   ├───AutoMapper.cs          
+│   └───Services               
 │
 ├───MultiLib.ContentAPI
-│   ├───Controllers             // Controllers for additional APIs
-│   ├───Data                    // Data access layer (Repositories)
-│   ├───Dtos                    // Data Transfer Objects
-│   ├───Migrations              // Ef Core Migrations
-│   ├───Models                  // Models.
-│   ├───AutoMapper.cs           // AutoMapper Configuration Class.
-│   └───Services                // Service classes for additional APIs
+│   ├───Controllers            
+│   ├───Data                    
+│   ├───Dtos                    
+│   ├───Migrations              
+│   ├───Models                  
+│   ├───AutoMapper.cs           
+│   └───Services                
 │
 ├───MultiLib.TaskManagementAPI
-│   ├───Controllers             // Controllers for additional APIs
-│   ├───Data                    // Data access layer (Repositories)
-│   ├───Dtos                    // Data Transfer Objects
-│   ├───Migrations              // Ef Core Migrations
-│   ├───Models                  // Models.
-│   ├───AutoMapper.cs           // AutoMapper Configuration Class.
-│   └───Services                // Service classes for additional APIs
+│   ├───Controllers             
+│   ├───Data                    
+│   ├───Dtos                    
+│   ├───Migrations              
+│   ├───Models                  
+│   ├───AutoMapper.cs           
+│   └───Services               
 │
-├───MultiLib.Core    // Class Library
-│   └───Different Classes       // To Add Reusable or Common Classes in this library for all the projects.
+├───MultiLib.Core                // Class Library
+│   └───Different Class      // To Add Reusable or Common Classes in this library for all the projects.
 │
 └───MultiLib.EcommerceAPI (Future)
     ├───Controllers             // Controllers for additional APIs
-    ├───Data                    // Data access layer (Repositories)
+    ├───Data                    // Data access layer
     ├───Dtos                    // Data Transfer Objects
     ├───Migrations              // Ef Core Migrations
     ├───Models                  // Models.
-    └───Services                // Service classes for additional APIs
+    └───Services                // Interface and Repositories
 ```
 
 ## API Reference for MultiLib.Auth
