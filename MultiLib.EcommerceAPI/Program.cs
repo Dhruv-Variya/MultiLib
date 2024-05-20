@@ -1,9 +1,8 @@
-using MainService.Data;
-using MainService.Services.movieManagementService;
-using MainService.Services.SeriesService;
 using Microsoft.EntityFrameworkCore;
-var builder = WebApplication.CreateBuilder(args);
+using MultiLib.EcommerceAPI.Data;
 
+
+var builder = WebApplication.CreateBuilder(args);
 // Add database context and connection string to migrate database using EfCore
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder
     .Configuration.GetConnectionString("DefaultConnection")));
@@ -15,12 +14,8 @@ builder.Services.AddSwaggerGen();
 // automapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 //Add Service to program.cs
-builder.Services.AddScoped<IMovieManagementService, movieManagementService>();
-builder.Services.AddScoped<ISeriesService, SeriesService>();
-
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -32,14 +27,15 @@ app.UseCors(options =>
 {
     options.AllowAnyHeader();
     options.AllowAnyMethod();
-    options.AllowAnyOrigin();   
+    options.AllowAnyOrigin();
 });
 
-app.UseStaticFiles();
+// Configure the HTTP request pipeline.
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
+
 app.UseAuthorization();
-app.UseAuthentication();
+
 app.MapControllers();
 
 app.Run();
