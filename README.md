@@ -1,8 +1,8 @@
 <h1 align="center">MultiLib(Multi Purpose Library)</h1>
+                                                    
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FDhruv-Variya%2FMultiLib&countColor=%23263759)
 
 ## Introduction
-
-.NET API solution with multiple projects.
 - This is my personal project to explore and learn .NET Web API.
 - I have used multiple projects in single solution method.
 - MultiLib is a comprehensive library management system built to explore and implement various functionalities of .NET Web API. It includes modules for user authentication, content management, and task management, with future plans for e-commerce integration.
