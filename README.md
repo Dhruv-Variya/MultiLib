@@ -35,6 +35,7 @@ Clone the project
  2. Restore NuGet packages.
  3. Configure connection strings in appsettings.json.
  4. Build and run the project.
+ 5. Please give a star⭐ and share with your friends if you like this!!!.
 
 ## Structure of this Project
 
