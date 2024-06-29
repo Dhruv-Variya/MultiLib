@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLib.Auth", "..\MultiLi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLib.TaskManagementAPI", "..\MultiLib.TaskManagementAPI\MultiLib.TaskManagementAPI.csproj", "{689E336A-0B24-4E1D-B6AA-DBE06DEF30AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLib.EcommerceAPI", "..\MultiLib.EcommerceAPI\MultiLib.EcommerceAPI.csproj", "{3AE38E54-05C8-4BE8-A6EF-EC144C47A988}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLib.EcommerceAPI", "..\MultiLib.EcommerceAPI\MultiLib.EcommerceAPI.csproj", "{3AE38E54-05C8-4BE8-A6EF-EC144C47A988}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multilib.MqttService", "..\Multilib.MqttService\Multilib.MqttService.csproj", "{CCB4DF42-30D9-4F2A-99A1-3064926548B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{3AE38E54-05C8-4BE8-A6EF-EC144C47A988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AE38E54-05C8-4BE8-A6EF-EC144C47A988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AE38E54-05C8-4BE8-A6EF-EC144C47A988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCB4DF42-30D9-4F2A-99A1-3064926548B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB4DF42-30D9-4F2A-99A1-3064926548B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCB4DF42-30D9-4F2A-99A1-3064926548B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCB4DF42-30D9-4F2A-99A1-3064926548B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
