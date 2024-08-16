@@ -5,7 +5,7 @@
 ## Introduction
 - This is my personal project to explore and learn .NET Web API.
 - I have used multiple projects in single solution method.
-- MultiLib is a comprehensive library management system built to explore and implement various functionalities of .NET Web API. It includes modules for user authentication, content management, and task management, with future plans for e-commerce integration.
+- MultiLib is a comprehensive system built to explore and implement various functionalities of .NET Web API. It includes modules for user authentication, content management, and task management, with future plans for e-commerce integration.
 
 ### Tech Stack
 - **Language**: C#
